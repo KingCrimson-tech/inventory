@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <main class="container">
+        <h1>Welcome to Musical Inventory Shop</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <h3><%= categoriesCount %></h3>
+                <p>Categories</p>
+                <a href="/categories" class="btn">View Categories</a>
+            </div>
+            <div class="stat-card">
+                <h3><%= itemsCount %></h3>
+                <p>Items</p>
+                <a href="/items" class="btn">View Items</a>
+            </div>
+        </div>
+
+        <section class="recent-items">
+            <h2>Recently Added Items</h2>
+            <div class="items-grid">
+                <% recentItems.forEach(item => { %>
+                    <div class="item-card">
+                        <h3><a href="/items/<%= item.id %>"><%= item.name %></a></h3>
+                        <p class="category"><%= item.category_name %></p>
+                        <p class="price">$<%= item.price %></p>
+                        <p class="quantity">In Stock: <%= item.quantity %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

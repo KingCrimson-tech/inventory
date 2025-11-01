@@ -11,7 +11,7 @@ const itemsController = {
                 `)
             res.render('items/index', {
                 title: "ALl items",
-                items: reqult.rows
+                items: result.rows
             })
         } catch (error) {
             console.error("Error fetching items:", error)

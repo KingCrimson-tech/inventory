@@ -1,6 +1,6 @@
 const pool = require("../db/pool")
 
-const categotriesController = {
+const categoriesController = {
     async getAllCategories(req, res) {
         try {
             const result = await pool.query("SELECT * FROM categories ORDER BY name")
@@ -41,11 +41,11 @@ const categotriesController = {
         })
     },
 
-    async createCatorgory(req, res){
+    async createCategory(req, res){
         try {
             const {name, description } = req.body
             await pool.query(
-                "insert into categories (name, description) calues ($1, $2)",
+                "insert into categories (name, description) values ($1, $2)",
                 [name, description]
             )
             res.redirect('/categories')
@@ -101,4 +101,4 @@ const categotriesController = {
     }   
 }
 
-module.exports = categoriesController
+module.exports = categoriesController;
